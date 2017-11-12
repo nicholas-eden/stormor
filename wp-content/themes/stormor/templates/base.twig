@@ -1,0 +1,33 @@
+{% block html_head_container %}
+
+  {% include 'html-header.twig' %}
+  {% block head %}
+  {% endblock %}
+  </head>
+{% endblock %}
+
+<body class="{{ body_class }}" data-template="base.twig">
+<div id="header-repeat">
+  <div id="header-content">
+    {% block header %}
+      <p id="header-phone">Call Now! 1-316-681-0862</p>
+      {% include "mini-nav.twig" with {'menu': mini_menu.get_items} %}
+      <p id="tag">Easy access, climate control, and safely secure! Enjoy your space!</p>
+    {% endblock %}
+  </div>
+</div>
+
+<div id="main-content">
+  <a id="logo" href="/">Bel-Aire Mini Storage</a>
+  {% include "main-nav.twig" with {'menu': main_menu.get_items} %}
+  <img id="splash" src="{{ site.theme.link }}/images/splash_03.jpg"/>
+  {#{% if title %}<h1>{{ title }}</h1>{% endif %}#}
+  {% block content %}
+    Sorry, no content
+  {% endblock %}
+  <div style="clear:both;"></div>
+
+  {{ function('wp_footer') }}
+</div>
+</body>
+</html>

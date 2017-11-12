@@ -1,0 +1,14 @@
+{#{% if menu %}#}
+<ul id="main-nav">
+  {% for item in menu %}
+    <li>
+      <a target="{{ item.target }}"
+         href="{{ item.link }}"
+         class="{{ item.classes | join(' ') }}"
+      >
+        {{ item.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+{#{% endif %}#}
