@@ -1,17 +1,12 @@
 {#{% if menu %}#}
-	<ul id="mini-nav">
-		<li><a href="/">Location</a> |</li>
-		<li><a href="/">Prices</a> |</li>
-		<li><a href="/">Contact</a> </li>
-    {% for item in menu %}
-		<li>
-			<a target="{{ item.target }}" href="{{ item.link }}">
-				{{ item.title }}
-				{% if not loop.last %}
-					|
-				{% endif %}
-			</a>
-		</li>
-	{% endfor %}
-	</ul>
+<ul id="mini-nav">
+  {% for item in menu %}
+    <li>
+      <a target="{{ item.target }}" href="{{ item.link }}">
+        {{ item.title }}
+      </a>
+      {% if not loop.last %} | {% endif %}
+    </li>
+  {% endfor %}
+</ul>
 {#{% endif %}#}

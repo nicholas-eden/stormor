@@ -10,17 +10,22 @@
 <div id="header-repeat">
   <div id="header-content">
     {% block header %}
-      <p id="header-phone">Call Now! 1-316-681-0862</p>
+      <p id="header-phone">{{ options.phone_cta.value }}</p>
       {% include "mini-nav.twig" with {'menu': mini_menu.get_items} %}
-      <p id="tag">Easy access, climate control, and safely secure! Enjoy your space!</p>
+      <p id="tag">{{ site.description }}</p>
     {% endblock %}
   </div>
 </div>
 
 <div id="main-content">
-  <a id="logo" href="/">Bel-Aire Mini Storage</a>
+  <a id="logo"
+     href="/"
+     style="background-image: url({{ TimberImage(options.tag_image.value).src }})"
+  >
+    {{ site.name }}
+  </a>
   {% include "main-nav.twig" with {'menu': main_menu.get_items} %}
-  <img id="splash" src="{{ site.theme.link }}/images/splash_03.jpg"/>
+  <img id="splash" src="{{ TimberImage(options.banner_image.value).src }}"/>
   {#{% if title %}<h1>{{ title }}</h1>{% endif %}#}
   {% block content %}
     Sorry, no content

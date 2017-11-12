@@ -1,5 +1,7 @@
 <?php
 
+require_once 'lib/custom-fields.php';
+
 if (!class_exists('Timber')) {
   add_action('admin_notices', function () {
     echo '<div class="error"><p>Timber not activated. Make sure you activate the plugin in <a href="' . esc_url(admin_url('plugins.php#timber')) . '">' . esc_url(admin_url('plugins.php')) . '</a></p></div>';
@@ -28,6 +30,8 @@ class StarterSite extends TimberSite
     add_action('init', array($this, 'register_post_types'));
     add_action('init', array($this, 'register_taxonomies'));
 
+    add_image_size( 'banner', '940', '300', array( "center", "center") );
+
     wp_deregister_script('jquery');
     wp_register_script('jquery', "https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js", false, null);
     wp_enqueue_script('jquery');
@@ -51,6 +55,7 @@ class StarterSite extends TimberSite
     $context['site'] = $this;
     $context['is_front_page'] = is_front_page();
     $context['is_home'] = is_home();
+    $context['options'] = get_field_objects('options');
 
     return $context;
   }
